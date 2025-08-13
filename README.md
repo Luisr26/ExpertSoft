@@ -80,70 +80,70 @@ The system uses a normalized database design with the following entities:
 
 ## 🔌 API Endpoints
 
-### Platforms (`/plataformas`)
+### Platforms (`/platforms`)
 
-#### GET `/plataformas`
+#### GET `/platforms`
 Retrieve all platforms
 ```bash
-curl http://localhost:3000/plataformas
+curl http://localhost:3000/platforms
 ```
 
-#### GET `/plataformas/:id`
+#### GET `/platforms/:id`
 Retrieve a specific platform by ID
 ```bash
-curl http://localhost:3000/plataformas/1
+curl http://localhost:3000/platforms/1
 ```
 
-#### POST `/plataformas`
+#### POST `/platforms`
 Create a new platform
 ```bash
-curl -X POST http://localhost:3000/plataformas \
+curl -X POST http://localhost:3000/platforms \
   -H "Content-Type: application/json" \
   -d '{
     "nombre_plataforma": "Bancolombia"
   }'
 ```
 
-#### PUT `/plataformas/:id`
+#### PUT `/platforms/:id`
 Update an existing platform
 ```bash
-curl -X PUT http://localhost:3000/plataformas/1 \
+curl -X PUT http://localhost:3000/platforms/1 \
   -H "Content-Type: application/json" \
   -d '{
-    "nombre_plataforma": "Bancolombia Actualizado"
+    "nombre_plataforma": "Bancolombia Updated"
   }'
 ```
 
-#### DELETE `/plataformas/:id`
+#### DELETE `/platforms/:id`
 Delete a platform
 ```bash
-curl -X DELETE http://localhost:3000/plataformas/1
+curl -X DELETE http://localhost:3000/platforms/1
 ```
 
-### Clients (`/clientes`)
+### Clients (`/clients`)
 
-#### GET `/clientes`
+#### GET `/clients`
 Retrieve all clients
 ```bash
-curl http://localhost:3000/clientes
+curl http://localhost:3000/clients
 ```
 
-#### GET `/clientes/:id`
+#### GET `/clients/:id`
 Retrieve a specific client by ID
 ```bash
-curl http://localhost:3000/clientes/1
+curl http://localhost:3000/clients/1
 ```
 
-#### GET `/clientes/:id/transacciones`
+#### GET `/clients/:id/transactions`
 Retrieve all transactions for a specific client
 ```bash
-curl http://localhost:3000/clientes/1/transacciones
+curl http://localhost:3000/clients/1/transactions
 ```
 
-#### POST `/clientes`
+#### POST `/clients`
 Create a new client
 ```bash
-curl -X POST http://localhost:3000/clientes \
+curl -X POST http://localhost:3000/clients \
   -H "Content-Type: application/json" \
   -d '{
     "nombre_cliente": "Juan Pérez",
@@ -154,44 +154,44 @@ curl -X POST http://localhost:3000/clientes \
   }'
 ```
 
-#### PUT `/clientes/:id`
+#### PUT `/clients/:id`
 Update an existing client
 ```bash
-curl -X PUT http://localhost:3000/clientes/1 \
+curl -X PUT http://localhost:3000/clients/1 \
   -H "Content-Type: application/json" \
   -d '{
-    "nombre_cliente": "Juan Pérez Actualizado",
+    "nombre_cliente": "Juan Pérez Updated",
     "numero_identificacion": "12345678",
     "direccion": "Calle 123 #45-67",
     "telefono": "3001234567",
-    "correo_electronico": "juan.perez.actualizado@email.com"
+    "correo_electronico": "juan.perez.updated@email.com"
   }'
 ```
 
-#### DELETE `/clientes/:id`
+#### DELETE `/clients/:id`
 Delete a client
 ```bash
-curl -X DELETE http://localhost:3000/clientes/1
+curl -X DELETE http://localhost:3000/clients/1
 ```
 
-### Invoices (`/facturas`)
+### Invoices (`/invoices`)
 
-#### GET `/facturas`
+#### GET `/invoices`
 Retrieve all invoices
 ```bash
-curl http://localhost:3000/facturas
+curl http://localhost:3000/invoices
 ```
 
-#### GET `/facturas/:id`
+#### GET `/invoices/:id`
 Retrieve a specific invoice by ID
 ```bash
-curl http://localhost:3000/facturas/1
+curl http://localhost:3000/invoices/1
 ```
 
-#### POST `/facturas`
+#### POST `/invoices`
 Create a new invoice
 ```bash
-curl -X POST http://localhost:3000/facturas \
+curl -X POST http://localhost:3000/invoices \
   -H "Content-Type: application/json" \
   -d '{
     "numero_factura": "FAC-001-2024",
@@ -201,10 +201,10 @@ curl -X POST http://localhost:3000/facturas \
   }'
 ```
 
-#### PUT `/facturas/:id`
+#### PUT `/invoices/:id`
 Update an existing invoice
 ```bash
-curl -X PUT http://localhost:3000/facturas/1 \
+curl -X PUT http://localhost:3000/invoices/1 \
   -H "Content-Type: application/json" \
   -d '{
     "numero_factura": "FAC-001-2024",
@@ -214,30 +214,30 @@ curl -X PUT http://localhost:3000/facturas/1 \
   }'
 ```
 
-#### DELETE `/facturas/:id`
+#### DELETE `/invoices/:id`
 Delete an invoice
 ```bash
-curl -X DELETE http://localhost:3000/facturas/1
+curl -X DELETE http://localhost:3000/invoices/1
 ```
 
-### Transactions (`/transacciones`)
+### Transactions (`/transactions`)
 
-#### GET `/transacciones`
+#### GET `/transactions`
 Retrieve all transactions with related data
 ```bash
-curl http://localhost:3000/transacciones
+curl http://localhost:3000/transactions
 ```
 
-#### GET `/transacciones/:id`
+#### GET `/transactions/:id`
 Retrieve a specific transaction by ID
 ```bash
-curl http://localhost:3000/transacciones/TXN001
+curl http://localhost:3000/transactions/TXN001
 ```
 
-#### POST `/transacciones`
+#### POST `/transactions`
 Create a new transaction
 ```bash
-curl -X POST http://localhost:3000/transacciones \
+curl -X POST http://localhost:3000/transactions \
   -H "Content-Type: application/json" \
   -d '{
     "id_transaccion": "TXN001",
@@ -247,14 +247,14 @@ curl -X POST http://localhost:3000/transacciones \
     "fecha_hora_transaccion": "2024-01-15 10:30:00",
     "monto_transaccion": 150000.00,
     "estado_transaccion": "Completada",
-    "tipo_transaccion": "Pago de factura"
+    "tipo_transaccion": "Invoice Payment"
   }'
 ```
 
-#### PUT `/transacciones/:id`
+#### PUT `/transactions/:id`
 Update an existing transaction
 ```bash
-curl -X PUT http://localhost:3000/transacciones/TXN001 \
+curl -X PUT http://localhost:3000/transactions/TXN001 \
   -H "Content-Type: application/json" \
   -d '{
     "id_cliente": 1,
@@ -263,14 +263,14 @@ curl -X PUT http://localhost:3000/transacciones/TXN001 \
     "fecha_hora_transaccion": "2024-01-15 10:30:00",
     "monto_transaccion": 150000.00,
     "estado_transaccion": "Completada",
-    "tipo_transaccion": "Pago de factura actualizado"
+    "tipo_transaccion": "Invoice Payment Updated"
   }'
 ```
 
-#### DELETE `/transacciones/:id`
+#### DELETE `/transactions/:id`
 Delete a transaction
 ```bash
-curl -X DELETE http://localhost:3000/transacciones/TXN001
+curl -X DELETE http://localhost:3000/transactions/TXN001
 ```
 
 ## 🔧 Development Endpoints

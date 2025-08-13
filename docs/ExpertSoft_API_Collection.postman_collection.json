@@ -1,0 +1,568 @@
+{
+	"info": {
+		"_postman_id": "expertsoft-api-collection",
+		"name": "ExpertSoft API Collection",
+		"description": "Complete API collection for ExpertSoft Financial Transaction Management System. Includes all CRUD operations for platforms, clients, invoices, and transactions.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "luis-orozco"
+	},
+	"item": [
+		{
+			"name": "Platforms",
+			"item": [
+				{
+					"name": "Get All Platforms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/platforms",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"platforms"
+							]
+						},
+						"description": "Retrieve all platforms from the database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Platform by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/platforms/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"platforms",
+								"1"
+							]
+						},
+						"description": "Retrieve a specific platform by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Platform",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre_plataforma\": \"Bancolombia\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/platforms",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"platforms"
+							]
+						},
+						"description": "Create a new platform"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Platform",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre_plataforma\": \"Bancolombia Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/platforms/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"platforms",
+								"1"
+							]
+						},
+						"description": "Update an existing platform"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Platform",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/platforms/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"platforms",
+								"1"
+							]
+						},
+						"description": "Delete a platform by ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Platform management endpoints"
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Get All Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Retrieve all clients from the database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						},
+						"description": "Retrieve a specific client by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/1/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"1",
+								"transactions"
+							]
+						},
+						"description": "Get all transactions for a specific client"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre_cliente\": \"Juan Pérez\",\n    \"numero_identificacion\": \"12345678\",\n    \"direccion\": \"Calle 123 #45-67, Bogotá\",\n    \"telefono\": \"3001234567\",\n    \"correo_electronico\": \"juan.perez@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients"
+							]
+						},
+						"description": "Create a new client"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre_cliente\": \"Juan Pérez Updated\",\n    \"numero_identificacion\": \"12345678\",\n    \"direccion\": \"Calle 123 #45-67, Bogotá\",\n    \"telefono\": \"3001234567\",\n    \"correo_electronico\": \"juan.perez.updated@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						},
+						"description": "Update an existing client"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						},
+						"description": "Delete a client by ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Client management endpoints"
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						},
+						"description": "Retrieve all invoices from the database"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"1"
+							]
+						},
+						"description": "Retrieve a specific invoice by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero_factura\": \"FAC-001-2024\",\n    \"periodo_facturacion\": \"2024-01\",\n    \"monto_facturado\": 150000.00,\n    \"monto_pagado\": 0.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						},
+						"description": "Create a new invoice"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero_factura\": \"FAC-001-2024\",\n    \"periodo_facturacion\": \"2024-01\",\n    \"monto_facturado\": 150000.00,\n    \"monto_pagado\": 150000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"1"
+							]
+						},
+						"description": "Update an existing invoice"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/invoices/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"1"
+							]
+						},
+						"description": "Delete an invoice by ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Invoice management endpoints"
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "Retrieve all transactions with related data"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions/TXN001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								"TXN001"
+							]
+						},
+						"description": "Retrieve a specific transaction by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_transaccion\": \"TXN001\",\n    \"id_cliente\": 1,\n    \"id_plataforma\": 1,\n    \"id_factura\": 1,\n    \"fecha_hora_transaccion\": \"2024-01-15 10:30:00\",\n    \"monto_transaccion\": 150000.00,\n    \"estado_transaccion\": \"Completada\",\n    \"tipo_transaccion\": \"Invoice Payment\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "Create a new transaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_cliente\": 1,\n    \"id_plataforma\": 1,\n    \"id_factura\": 1,\n    \"fecha_hora_transaccion\": \"2024-01-15 10:30:00\",\n    \"monto_transaccion\": 150000.00,\n    \"estado_transaccion\": \"Completada\",\n    \"tipo_transaccion\": \"Invoice Payment Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/transactions/TXN001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								"TXN001"
+							]
+						},
+						"description": "Update an existing transaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transactions/TXN001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transactions",
+								"TXN001"
+							]
+						},
+						"description": "Delete a transaction by ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Transaction management endpoints"
+		},
+		{
+			"name": "Development",
+			"item": [
+				{
+					"name": "Initialize Database",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/init-db",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"init-db"
+							]
+						},
+						"description": "Initialize database with seeders (development only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Database Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/verify-db",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"verify-db"
+							]
+						},
+						"description": "Verify database status and data loading (development only)"
+					},
+					"response": []
+				}
+			],
+			"description": "Development and testing endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

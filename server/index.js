@@ -3,15 +3,15 @@ import express from "express"
 import { pool } from "./conexion_db.js"
 
 const app = express()
-app.use(cors()) // esto permite que la aplicacion backend pueda ser consumida por una aplicacion frontend
-app.use(express.json()) // permite que Express interprete automáticamente el body en JSON cuando recibes una petición POST o PUT.
+app.use(cors()) // this allows the backend application to be consumed by a frontend application
+app.use(express.json()) // allows Express to automatically interpret the body in JSON when you receive a POST or PUT request.
 
 // =====================================================
-// ENDPOINTS PARA PLATAFORMAS
+// ENDPOINTS FOR PLATFORMS
 // =====================================================
 
-// GET - Obtener todas las plataformas
-app.get('/plataformas', async (req, res) => {
+// GET - Get all platforms
+app.get('/platforms', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM plataformas ORDER BY id_plataforma');
         res.json(rows);
@@ -25,8 +25,8 @@ app.get('/plataformas', async (req, res) => {
     }
 });
 
-// GET - Obtener plataforma por ID
-app.get('/plataformas/:id', async (req, res) => {
+// GET - Get platform by ID
+app.get('/platforms/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.query('SELECT * FROM plataformas WHERE id_plataforma = ?', [id]);
@@ -51,8 +51,8 @@ app.get('/plataformas/:id', async (req, res) => {
     }
 });
 
-// POST - Crear nueva plataforma
-app.post('/plataformas', async (req, res) => {
+// POST - Create new platform
+app.post('/platforms', async (req, res) => {
     try {
         const { nombre_plataforma } = req.body;
 
@@ -66,7 +66,7 @@ app.post('/plataformas', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         res.status(201).json({
-            mensaje: "plataforma creada exitosamente"
+            message: "Platform created successfully"
         })
     } catch (error) {
         res.status(500).json({
@@ -78,8 +78,8 @@ app.post('/plataformas', async (req, res) => {
     }
 })
 
-// PUT - Actualizar plataforma
-app.put('/plataformas/:id', async (req, res) => {
+// PUT - Update platform
+app.put('/platforms/:id', async (req, res) => {
     try {
         const { id } = req.params
         const { nombre_plataforma } = req.body
@@ -94,7 +94,7 @@ app.put('/plataformas/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "plataforma actualizada" })
+            return res.json({ message: "Platform updated successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -106,8 +106,8 @@ app.put('/plataformas/:id', async (req, res) => {
     }
 })
 
-// DELETE - Eliminar plataforma
-app.delete('/plataformas/:id', async (req, res) => {
+// DELETE - Delete platform
+app.delete('/platforms/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -119,7 +119,7 @@ app.delete('/plataformas/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "plataforma eliminada" })
+            return res.json({ message: "Platform deleted successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -132,11 +132,11 @@ app.delete('/plataformas/:id', async (req, res) => {
 })
 
 // =====================================================
-// ENDPOINTS PARA CLIENTES
+// ENDPOINTS FOR CLIENTS
 // =====================================================
 
-// GET - Obtener todos los clientes
-app.get('/clientes', async (req, res) => {
+// GET - Get all clients
+app.get('/clients', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM clientes ORDER BY nombre_cliente');
         res.json(rows);
@@ -150,8 +150,8 @@ app.get('/clientes', async (req, res) => {
     }
 });
 
-// GET - Obtener cliente por ID
-app.get('/clientes/:id', async (req, res) => {
+// GET - Get client by ID
+app.get('/clients/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.query('SELECT * FROM clientes WHERE id_cliente = ?', [id]);
@@ -176,8 +176,8 @@ app.get('/clientes/:id', async (req, res) => {
     }
 });
 
-// GET - Obtener transacciones de un cliente específico
-app.get('/clientes/:id/transacciones', async (req, res) => {
+// GET - Get transactions for a specific client
+app.get('/clients/:id/transactions', async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.query(`
@@ -206,8 +206,8 @@ app.get('/clientes/:id/transacciones', async (req, res) => {
     }
 });
 
-// POST - Crear nuevo cliente
-app.post('/clientes', async (req, res) => {
+// POST - Create new client
+app.post('/clients', async (req, res) => {
     try {
         const {
             nombre_cliente,
@@ -233,7 +233,7 @@ app.post('/clientes', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         res.status(201).json({
-            mensaje: "cliente creado exitosamente"
+            message: "Client created successfully"
         })
     } catch (error) {
         res.status(500).json({
@@ -245,8 +245,8 @@ app.post('/clientes', async (req, res) => {
     }
 })
 
-// PUT - Actualizar cliente
-app.put('/clientes/:id', async (req, res) => {
+// PUT - Update client
+app.put('/clients/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -279,7 +279,7 @@ app.put('/clientes/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "cliente actualizado" })
+            return res.json({ message: "Client updated successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -291,8 +291,8 @@ app.put('/clientes/:id', async (req, res) => {
     }
 })
 
-// DELETE - Eliminar cliente
-app.delete('/clientes/:id', async (req, res) => {
+// DELETE - Delete client
+app.delete('/clients/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -304,7 +304,7 @@ app.delete('/clientes/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "cliente eliminado" })
+            return res.json({ message: "Client deleted successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -317,11 +317,11 @@ app.delete('/clientes/:id', async (req, res) => {
 })
 
 // =====================================================
-// ENDPOINTS PARA FACTURAS
+// ENDPOINTS FOR INVOICES
 // =====================================================
 
-// GET - Obtener todas las facturas
-app.get('/facturas', async (req, res) => {
+// GET - Get all invoices
+app.get('/invoices', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM facturas ORDER BY periodo_facturacion DESC, numero_factura');
         res.json(rows);
@@ -335,8 +335,8 @@ app.get('/facturas', async (req, res) => {
     }
 });
 
-// GET - Obtener factura por ID
-app.get('/facturas/:id', async (req, res) => {
+// GET - Get invoice by ID
+app.get('/invoices/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.query('SELECT * FROM facturas WHERE id_factura = ?', [id]);
@@ -361,8 +361,8 @@ app.get('/facturas/:id', async (req, res) => {
     }
 });
 
-// POST - Crear nueva factura
-app.post('/facturas', async (req, res) => {
+// POST - Create new invoice
+app.post('/invoices', async (req, res) => {
     try {
         const {
             numero_factura,
@@ -386,7 +386,7 @@ app.post('/facturas', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         res.status(201).json({
-            mensaje: "factura creada exitosamente"
+            message: "Invoice created successfully"
         })
     } catch (error) {
         res.status(500).json({
@@ -398,8 +398,8 @@ app.post('/facturas', async (req, res) => {
     }
 })
 
-// PUT - Actualizar factura
-app.put('/facturas/:id', async (req, res) => {
+// PUT - Update invoice
+app.put('/invoices/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -429,7 +429,7 @@ app.put('/facturas/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "factura actualizada" })
+            return res.json({ message: "Invoice updated successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -441,8 +441,8 @@ app.put('/facturas/:id', async (req, res) => {
     }
 })
 
-// DELETE - Eliminar factura
-app.delete('/facturas/:id', async (req, res) => {
+// DELETE - Delete invoice
+app.delete('/invoices/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -454,7 +454,7 @@ app.delete('/facturas/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "factura eliminada" })
+            return res.json({ message: "Invoice deleted successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -467,11 +467,11 @@ app.delete('/facturas/:id', async (req, res) => {
 })
 
 // =====================================================
-// ENDPOINTS PARA TRANSACCIONES
+// ENDPOINTS FOR TRANSACTIONS
 // =====================================================
 
-// GET - Obtener todas las transacciones
-app.get('/transacciones', async (req, res) => {
+// GET - Get all transactions
+app.get('/transactions', async (req, res) => {
     try {
         const [rows] = await pool.query(`
             SELECT 
@@ -500,8 +500,8 @@ app.get('/transacciones', async (req, res) => {
     }
 });
 
-// GET - Obtener transacción por ID
-app.get('/transacciones/:id', async (req, res) => {
+// GET - Get transaction by ID
+app.get('/transactions/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const [rows] = await pool.query(`
@@ -542,8 +542,8 @@ app.get('/transacciones/:id', async (req, res) => {
     }
 });
 
-// POST - Crear nueva transacción
-app.post('/transacciones', async (req, res) => {
+// POST - Create new transaction
+app.post('/transactions', async (req, res) => {
     try {
         const {
             id_transaccion,
@@ -575,7 +575,7 @@ app.post('/transacciones', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         res.status(201).json({
-            mensaje: "transacción creada exitosamente"
+            message: "Transaction created successfully"
         })
     } catch (error) {
         res.status(500).json({
@@ -587,8 +587,8 @@ app.post('/transacciones', async (req, res) => {
     }
 })
 
-// PUT - Actualizar transacción
-app.put('/transacciones/:id', async (req, res) => {
+// PUT - Update transaction
+app.put('/transactions/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -627,7 +627,7 @@ app.put('/transacciones/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "transacción actualizada" })
+            return res.json({ message: "Transaction updated successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -639,8 +639,8 @@ app.put('/transacciones/:id', async (req, res) => {
     }
 })
 
-// DELETE - Eliminar transacción
-app.delete('/transacciones/:id', async (req, res) => {
+// DELETE - Delete transaction
+app.delete('/transactions/:id', async (req, res) => {
     try {
         const { id } = req.params
 
@@ -652,7 +652,7 @@ app.delete('/transacciones/:id', async (req, res) => {
         const [result] = await pool.query(query, values)
 
         if (result.affectedRows != 0) {
-            return res.json({ mensaje: "transacción eliminada" })
+            return res.json({ message: "Transaction deleted successfully" })
         }
     } catch (error) {
         res.status(500).json({
@@ -665,18 +665,18 @@ app.delete('/transacciones/:id', async (req, res) => {
 })
 
 // =====================================================
-// ENDPOINTS PARA INICIALIZACIÓN (SOLO EN DESARROLLO)
+// INITIALIZATION ENDPOINTS (DEVELOPMENT ONLY)
 // =====================================================
 
 if (process.env.NODE_ENV === 'development') {
-    // POST - Inicializar base de datos con seeders
+    // POST - Initialize database with seeders
     app.post('/init-db', async (req, res) => {
         try {
             const { loadAllData } = await import('./seeders/load_all_data.js');
             await loadAllData();
             
             res.json({
-                mensaje: "Base de datos inicializada exitosamente"
+                message: "Database initialized successfully"
             });
         } catch (error) {
             res.status(500).json({
@@ -688,14 +688,14 @@ if (process.env.NODE_ENV === 'development') {
         }
     });
     
-    // GET - Verificar estado de la base de datos
+    // GET - Verify database status
     app.get('/verify-db', async (req, res) => {
         try {
             const { verifyDataLoading } = await import('./seeders/load_all_data.js');
             await verifyDataLoading();
             
             res.json({
-                mensaje: "Verificación de base de datos completada exitosamente"
+                message: "Database verification completed successfully"
             });
         } catch (error) {
             res.status(500).json({
@@ -709,10 +709,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // =====================================================
-// MIDDLEWARE DE MANEJO DE ERRORES
+// ERROR HANDLING MIDDLEWARE
 // =====================================================
 
-// 404 - Ruta no encontrada
+// 404 - Route not found
 app.use('*', (req, res) => {
     res.status(404).json({
         status: 'error',
@@ -722,7 +722,7 @@ app.use('*', (req, res) => {
     });
 });
 
-// Middleware de manejo de errores global
+// Global error handling middleware
 app.use((error, req, res, next) => {
     console.error('Error:', error);
     res.status(500).json({
@@ -734,18 +734,18 @@ app.use((error, req, res, next) => {
 });
 
 // =====================================================
-// INICIAR SERVIDOR
+// START SERVER
 // =====================================================
 
-//Inicio del servidor cuando este todo listo
+// Server startup when everything is ready
 app.listen(3000, () => {
-    console.log("servidor prepado correctamente en http://localhost:3000");
-    console.log("📋 Endpoints disponibles:");
-    console.log("   - GET/POST/PUT/DELETE  /plataformas");
-    console.log("   - GET/POST/PUT/DELETE  /clientes");
-    console.log("   - GET/POST/PUT/DELETE  /facturas");
-    console.log("   - GET/POST/PUT/DELETE  /transacciones");
-    console.log("   - GET  /clientes/:id/transacciones");
+    console.log("Server ready successfully at http://localhost:3000");
+    console.log("📋 Available endpoints:");
+    console.log("   - GET/POST/PUT/DELETE  /platforms");
+    console.log("   - GET/POST/PUT/DELETE  /clients");
+    console.log("   - GET/POST/PUT/DELETE  /invoices");
+    console.log("   - GET/POST/PUT/DELETE  /transactions");
+    console.log("   - GET  /clients/:id/transactions");
 })
 
 export default app;
